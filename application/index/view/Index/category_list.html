@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加分类</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    {include file='common/css'}
+
+</head>
+
+<body class="gray-bg">
+<div class="container wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox-content">
+
+                <table class="table table-bordered">
+                    <div class="ibox-tools">
+                        <a class="reload-btn" onclick="location.reload();">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                    </div>
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>分类名称</th>
+                        <th>添加下级</th>
+                        <th>查看下级</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {foreach $list as $v}
+
+                    <tr>
+                        <td>{$v.id}</td>
+                        <td> <a href="{:url('index/index/news',['id'=>$v['id']])}">{$v.name}</a></td>
+                        <td><a href="{:url('index/Index/addCategory', ['id'=>$v['id']])}">添加</a>
+                            <a href="{:url('admin/Index/delete',['id'=>$v['id']])}" id="del">删除</a>
+                            <a href="{:url('admin/Index/upset', ['id'=>$v['id']])}">修改</a>
+                        </td>
+
+                        <td><a data-id="{$v.id}" class="point-e children" data-op="plus"><i class="fa fa-plus"></i></a></td>
+                    </tr>
+
+                    {/foreach}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file='common/js'}
+
+<script>
+
+    $('.ibox-content').on('click', '.children', function () {
+
+        var i = $(this);
+        var pid = i.attr('data-id');
+
+        var op = i.attr('data-op');
+
+        if (op == 'plus'){
+
+            i.attr('data-op', 'minus');
+            i.html('<i class="fa fa-minus"></i>');
+
+            $.get('', {id: pid}, function (e) {
+                if (e){
+                    $('.x'+pid).remove();
+                    i.parent().parent().after(e);
+                }
+            })
+
+        }else{
+            i.attr('data-op', 'plus');
+            i.html('<i class="fa fa-plus"></i>');
+            $('.x'+pid).remove();
+        }
+    });
+    $('#del').click(function () {
+        if (!confirm('您确定要删除吗')){
+            return false;
+        }
+    });
+
+</script>
+</body>
+
+</html>
