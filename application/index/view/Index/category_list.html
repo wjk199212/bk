@@ -41,8 +41,8 @@
                         <td>{$v.id}</td>
                         <td> <a href="{:url('index/index/news',['id'=>$v['id']])}">{$v.name}</a></td>
                         <td><a href="{:url('index/Index/addCategory', ['id'=>$v['id']])}">添加</a>
-                            <a href="{:url('admin/Index/delete',['id'=>$v['id']])}" id="del">删除</a>
-                            <a href="{:url('admin/Index/upset', ['id'=>$v['id']])}">修改</a>
+                            <a href="{:url('index/Index/delete',['id'=>$v['id']])}" id="del">删除</a>
+                            <a href="{:url('index/Index/upset', ['id'=>$v['id']])}">修改</a>
                         </td>
 
                         <td><a data-id="{$v.id}" class="point-e children" data-op="plus"><i class="fa fa-plus"></i></a></td>

@@ -1,0 +1,34 @@
+{extend name='stencil/zz' /}
+
+{block name='main'}
+<div class="card-body">
+    <ul class="list-unstyled threadlist mb-0">
+        {foreach $list as $v}
+        <li class="media thread tap top_3 " data-href="" data-tid="1">
+
+            <a rel="nofollow" target="_blank" href="" tabindex="-1"
+               class="ml-1 mt-1 mr-3">
+                <img class="avatar-3" src="/{$v.minthumb}">
+            </a>
+
+
+            <div class="media-body">
+                <div class="subject break-all">
+                    <!--<img src="/static/ui/xbt/img/2.jpg" style="border-radius: 50%;width: 10px;height: 10px" alt="">-->
+                    <a target="_blank"
+                       href="{:url('admin/Index/detail', ['id'=>$v['id']])}">{$v.title}</a>
+                </div>
+                <div class="d-flex justify-content-between small mt-1">
+                    <div>
+                        <span class="username text-grey mr-1  hidden-sm" uid="1">{$v.create_time}</span>
+                    </div>
+                    <div class="text-muted small">
+                        <span class="ml-2"><i class="icon-comment-o"></i> </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+{/block}

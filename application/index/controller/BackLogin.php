@@ -14,7 +14,7 @@ class BackLogin extends Controller{
     public function out(){
 //        退出登录 置空session 并跳转到登录页面
         session('adminLoginVal',null);
-        $this->redirect('admin/Login/in');
+        $this->redirect('index/Login/in');
     }
 //    登录
     public function in(){
@@ -58,7 +58,7 @@ class BackLogin extends Controller{
             if (password_verify($data['password'],$admin['password'])){
 //             用session 记录当前登录状态
                 session('adminLoginVal',$admin);
-                $this->success('登录成功',url('index/index/index'));
+                $this->success('登录成功',url('index/article/page'));
             }else{
                 $this->error('您输入的账户密码有误');
             }

@@ -59,8 +59,8 @@
                         </td>
                         <td>
                             <!--<button >删除</button>-->
-                            <a href="{:url('admin/Article/delete',['id'=>$v['id']])}" id="del">删除</a>
-                            <a href="{:url('admin/Article/upset',['id'=>$v['id']])}" id="mod">修改</a>
+                            <a href="{:url('index/Article/delete',['id'=>$v['id']])}" id="del">删除</a>
+                            <a href="{:url('index/Article/upset',['id'=>$v['id']])}" id="mod">修改</a>
                         </td>
                     </tr>
 
@@ -70,7 +70,7 @@
                 </table>
 
                 {$list|raw}
-                <a href="{:url('admin/Article/add')}">继续添加文章</a>
+                <a href="{:url('index/Article/add')}">继续添加文章</a>
 
 
             </div>
@@ -89,7 +89,7 @@
     $('.status').click(function () {
 
         var i = $(this);
-        $.post('{:url("admin/Article/changeStatus")}', {id: i.attr('data-id')}, function (e) {
+        $.post('{:url("index/Article/changeStatus")}', {id: i.attr('data-id')}, function (e) {
             if (!e.code){
                 layer.alert(e.msg);
             }else{

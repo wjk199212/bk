@@ -16,7 +16,7 @@
 
     <title>编程·学不停</title>
 
-
+    {block name='css'}{/block}
     <style>
         table.nav_tag_list {
             margin-bottom: 0.2rem;
@@ -174,8 +174,8 @@
         </a>
 
 
-        <a class="navbar-brand hidden-lg" href="{:url('index/Login/in')}" aria-label="登录"> <i
-                class="icon-user icon"></i></a>
+        <!--<a class="navbar-brand hidden-lg" href="{:url('index/Login/in')}" aria-label="登录"> <i-->
+                <!--class="icon-user icon"></i></a>-->
 
 
         <div class="collapse navbar-collapse" id="nav">
@@ -183,72 +183,87 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item home active" fid="0" data-active="fid-0"><a class="nav-link"
-                                                                                href=""><i
+                                                                                href="{:url('admin/index/lobby')}"><i
                         class="icon-home d-md-none"></i> 首页</a></li>
 
 
                 <li class="nav-item" fid="1" data-active="fid-1">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/talk')}"><i class="icon-circle-o d-md-none"></i>
                         闲聊</a>
                 </li>
 
 
                 <li class="nav-item" fid="2" data-active="fid-2">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/php')}"><i class="icon-circle-o d-md-none"></i>
                         PHP</a>
                 </li>
 
 
                 <li class="nav-item" fid="3" data-active="fid-3">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/Java')}"><i class="icon-circle-o d-md-none"></i>
                         Java</a>
                 </li>
 
 
                 <li class="nav-item" fid="4" data-active="fid-4">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/Python')}"><i class="icon-circle-o d-md-none"></i>
                         Python</a>
                 </li>
 
 
                 <li class="nav-item" fid="5" data-active="fid-5">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/end')}"><i class="icon-circle-o d-md-none"></i>
                         前端</a>
                 </li>
 
 
                 <li class="nav-item" fid="8" data-active="fid-8">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/UI')}"><i class="icon-circle-o d-md-none"></i>
                         UI</a>
                 </li>
 
 
                 <li class="nav-item" fid="11" data-active="fid-11">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/fwq')}"><i class="icon-circle-o d-md-none"></i>
                         服务器</a>
                 </li>
 
 
                 <li class="nav-item" fid="13" data-active="fid-13">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/data')}"><i class="icon-circle-o d-md-none"></i>
                         数据库</a>
                 </li>
 
 
                 <li class="nav-item" fid="9" data-active="fid-9">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/blind')}"><i class="icon-circle-o d-md-none"></i>
                         相亲</a>
                 </li>
 
 
                 <li class="nav-item" fid="10" data-active="fid-10">
-                    <a class="nav-link" href=""><i class="icon-circle-o d-md-none"></i>
+                    <a class="nav-link" href="{:url('admin/index/job')}"><i class="icon-circle-o d-md-none"></i>
                         求职招聘</a>
                 </li>
 
 
             </ul>
--->
+            <!-- 右侧：用户 -->
+            <!--<ul class="navbar-nav">-->
+                <!--<li class="nav-item hidden-lg">-->
+                    <!--<a class="nav-link" href=""><i class="icon-search"></i> 搜索</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a rel="nofollow" class="nav-link" href="{:url('index/Login/in')}"><i-->
+                            <!--class="icon-user"></i> 登录</a></li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a rel="nofollow" class="nav-link"-->
+                       <!--href="{:url('index/Login/up')}">注册</a></li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a rel="nofollow" class="nav-link"-->
+                       <!--href="{:url('index/Login/in')}">退出登录</a></li>-->
+
+            <!--</ul>-->
         </div>
     </div>
 </header>
@@ -272,57 +287,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled threadlist mb-0">
-
-
-                            <li class="media thread tap top_3 " data-href="" data-tid="1">
-
-                                <a rel="nofollow" target="_blank" href="" tabindex="-1"
-                                   class="ml-1 mt-1 mr-3">
-                                    <img class="avatar-3" src="/static/ui/xbt/img/avatar.png">
-                                </a>
-
-
-                                <div class="media-body">
-                                    <div class="subject break-all">
-
-
-                                        <i class="icon-top-3"></i>
-
-
-                                        <a target="_blank"
-                                           href="">关于编程·学不停社区的一些说明和约定</a>
-
-
-                                    </div>
-                                    <div class="d-flex justify-content-between small mt-1">
-                                        <div>
-
-                                            <span class="username text-grey mr-1  hidden-sm" uid="1">shusheng</span>
-                                            <span class="date text-grey hidden-sm">2月前</span>
-
-
-                                            <span>
-										<span class="text-grey mx-2">←</span>
-										<span class="username text-grey mr-1" uid="1">shusheng</span>
-										<span class="text-grey">1月前</span>
-									</span>
-
-                                        </div>
-                                        <div class="text-muted small">
-
-                                            <span class="ml-2 d-none"><i class="icon-eye"></i> 488</span>
-
-
-                                            <span class="ml-2"><i class="icon-comment-o"></i> 17</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
+                {block name='main'} {/block}
 
 
                 <nav class="my-3">
@@ -338,7 +304,7 @@
 
             </div>
             <div class="col-lg-3 d-none d-lg-block aside">
-                <a role="button" class="btn btn-primary btn-block mb-3" href="thread-create-0.htm">发布新主题</a>
+                <a role="button" class="btn btn-primary btn-block mb-3" href="{:url('index/article/add')}">发布新主题</a>
 
                 <div class="card card-site-info">
 
@@ -404,7 +370,7 @@
                         <ul>
                             <li class="mb-1 small line-height-2">
                                 <a href="https://imshusheng.com/" target="_blank">
-                                    书生程序员 </a>
+                                    迪迦奥特门 </a>
                             </li>
                         </ul>
                     </div>
@@ -416,7 +382,6 @@
 
     </div>
 </main>
-
 
 <footer class="text-muted small bg-dark py-4 mt-3" id="footer">
     <div class="container">
@@ -432,7 +397,7 @@
     </div>
 </footer>
 
-
+{block name='script'}{/block}
 <!--[if ltg IE 9]>
 <script>window.location = 'browser.htm';</script>
 <![endif]-->
@@ -505,22 +470,6 @@
     });
 </script>
 <script>
-    // 版主管理：精华
-    /*
-    $('.mod-button button.digest').on('click', function() {
-        var modtid = $('input[name="modtid"]').checked();
-        if(modtid.length == 0) return $.alert(lang.please_choose_thread);
-        var radios = xn.form_radio('digest', {"0": "取消精华", "1": "一级精华","2": "二级精华", "3": "三级精华"});
-        $.confirm("设置主题为精华", function() {
-            var tids = xn.implode('_', modtid);
-            var digest = $('input[name="digest"]').checked();
-            var postdata = {digest: digest};
-            $.xpost(xn.url('mod-digest-'+tids), postdata, function(code, message) {
-                if(code != 0) return $.alert(message);
-                $.alert(message).delay(1000).location('');
-            });
-        }, {'body': '<p>'+"精华等级"+'：'+radios+'</p>'});
-    })*/
 </script>
 
 

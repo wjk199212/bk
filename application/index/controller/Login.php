@@ -105,7 +105,7 @@ class Login extends Controller
             if (password_verify($data['password'],$admin['password'])){
 //             用session 记录当前登录状态
                 session('adminLoginVal',$admin);
-                $this->success('登录成功',url('index/Index/index'));
+                $this->success('登录成功',url('admin/index/lobby'));
             }else{
                 $this->error('您输入的账户密码有误');
             }

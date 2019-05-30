@@ -97,7 +97,6 @@
         </div>
     </div>
 </div>
-
 {include file='common/js'}
 <script src="/static/ui/library/ue/ueditor.config.js"></script>
 <script src="/static/ui/library/ue/ueditor.all.js"></script>
@@ -106,7 +105,7 @@
 
 <script>
     var ue = UE.getEditor('editor1', {
-        serverUrl:"{:url('admin/Article/umUploadImage')}",
+        serverUrl:"{:url('index/Article/umUploadImage')}",
         toolbars:[[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
             'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
@@ -129,7 +128,7 @@
 
         var i = $(this);
 
-        $.post('{:url("admin/Article/ajaxCategory")}', {id: i.val()}, function (e) {
+        $.post('{:url("index/Article/ajaxCategory")}', {id: i.val()}, function (e) {
 
             console.log(e);
 
@@ -182,7 +181,7 @@
 
         swf:'/static/ui/library/webuploader/Uploader.swf',
         // 接收文件的服务端路径
-        server:'{:url("admin/Article/uploadImage")}',
+        server:'{:url("index/Article/uploadImage")}',
         pick:'#picker',
         auto:true,
         duplicate:true,
@@ -190,7 +189,7 @@
     });
     uploader.on( 'uploadSuccess', function(file, res) {
         if (res.code) {
-            $('#img').append('<img  style="height: 60px;"  src="'+res.min+'">');
+            $('#img').append('<img  style="height: 60px;"  src="'+'/'+res.min+'">');
             $('#thumb').val(res.thumb);
             $('#minthumb').val(res.min);
         }else{
