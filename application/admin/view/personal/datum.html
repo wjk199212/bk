@@ -21,7 +21,6 @@
 
 
 
-
     <style>
         table.nav_tag_list {margin-bottom: 0.2rem;}
         table.nav_tag_list td {padding: 0.3rem;}
@@ -34,11 +33,11 @@
             border: 1px solid #000; background: #000; color: #fff; text-decoration: none;
         }
     </style>
-    <link rel="stylesheet" href="view/css/bootstrap.css?1.0">
+    <link rel="stylesheet" href="/static/ui/xbt/css/bootstrap.css?1.0">
 
 
 
-    <link rel="stylesheet" href="view/css/bootstrap-bbs.css?1.0">
+    <link rel="stylesheet" href="/static/ui/xbt/css/bootstrap-bbs.css?1.0">
 
 
     <!--<link href="plugin/gmchina_xiuno_editormd/editormd/editormd.min.css" type="text/css" rel="stylesheet" />-->
@@ -176,7 +175,7 @@
                 <li class="nav-item hidden-lg">
                     <a class="nav-link" href="search.htm"><i class="icon-search"></i> 搜索</a>
                 </li>
-                <li class="nav-item username"><a class="nav-link" href="my.htm"><img class="avatar-1" src="view/img/avatar.png"> wjk</a></li>
+                <li class="nav-item username"><a class="nav-link" href="my.htm"><img class="avatar-1" src="/static/ui/img/pig.jpeg"> wjk</a></li>
                 <!-- 管理员 -->
 
                 <li class="nav-item"><a class="nav-link" href="user-logout.htm"><i class="icon-sign-out"></i> 退出</a></li>
@@ -185,6 +184,7 @@
         </div>
     </div>
 </header>
+{block name='main'} {/block}
 
 
 <main id="body">
@@ -197,11 +197,9 @@
         <div class="btn-group mb-3 d-lg-none" role="group" id="my_mobile_nav">
 
 
-            <a role="button" class="btn btn-secondary" data-active="menu-my" href="my.htm">个人资料</a>
+            <a role="button" class="btn btn-secondary" data-active="menu-my" href="{:url('admin/Personal/head')}">个人资料</a>
 
 
-
-            <a role="button" class="btn btn-secondary" data-active="menu-my-thread" href="my-thread.htm">论坛帖子</a>
 
 
         </div>
@@ -212,17 +210,12 @@
                 <div class="card">
                     <div class="card-body text-center">
 
-                        <img class="avatar-4" src="view/img/avatar.png">
+                        <img class="avatar-4" src="/static/ui/img/pig.jpeg">
                         <br>wjk
                     </div>
                     <div class="list-group list-group-flush text-center">
 
                         <a href="my.htm" class="list-group-item list-group-item-action" data-active="menu-my">个人资料</a>
-
-
-
-                        <a href="my-thread.htm" class="list-group-item list-group-item-action" data-active="menu-my-thread">论坛帖子</a>
-
 
                     </div>
                 </div>
@@ -239,19 +232,19 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link " href="my.htm" data-active="my-profile">基本资料</a>
+                                <a class="nav-link " href="{:url('admin/Personal/head')}" data-active="my-profile">基本资料</a>
                             </li>
 
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="my-password.htm" data-active="my-password">密码</a>
+                                <a class="nav-link" href="{:url('admin/Personal/password')}" data-active="my-password">密码</a>
                             </li>
 
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="my-avatar.htm" data-active="my-avatar">头像</a>
+                                <a class="nav-link" href="{:url('admin/Personal/datum')}" data-active="my-avatar">头像</a>
                             </li>
 
 
@@ -265,7 +258,7 @@
 
                         <div class="col-lg-6 mx-auto">
                             <div class="form-group text-center">
-                                <img id="avatar_img" class="logo-4" src="view/img/avatar.png">
+                                <img id="avatar_img" class="logo-4" src="/static/ui/img/pig.jpeg">
                             </div>
                             <div class="form-group custom-file">
                                 <input type="file" id="avatar_upload" accept="image/gif,image/jpeg,image/png,image/jpg,image/bmp"  class="upload custom-file-input" value="头像"/>
@@ -307,21 +300,21 @@
 </footer>
 
 
-
+{block name='script'}{/block}
 <!--[if ltg IE 9]>
 <script>window.location = 'browser.htm';</script>
 <![endif]-->
 
 
 
-<script src="lang/zh-cn/bbs.js?1.0"></script>
-<script src="view/js/jquery-3.1.0.js?1.0"></script>
-<script src="view/js/popper.js?1.0"></script>
-<script src="view/js/bootstrap.js?1.0"></script>
-<script src="view/js/xiuno.js?1.0"></script>
-<script src="view/js/bootstrap-plugin.js?1.0"></script>
-<script src="view/js/async.js?1.0"></script>
-<script src="view/js/form.js?1.0"></script>
+<script src="/static/ui/xut/bbs.js?1.0"></script>
+<script src="/static/ui/xut/js/jquery-3.1.0.js?1.0"></script>
+<script src="/static/ui/xut/js/popper.js?1.0"></script>
+<script src="/static/ui/xut/js/bootstrap.js?1.0"></script>
+<script src="/static/ui/xut/js/xiuno.js?1.0"></script>
+<script src="/static/ui/xut/js/bootstrap-plugin.js?1.0"></script>
+<script src="/static/ui/xut/js/async.js?1.0"></script>
+<script src="/static/ui/xut/js/form.js?1.0"></script>
 <script>
     var debug = DEBUG = 0;
     var url_rewrite_on = 1;
@@ -342,7 +335,7 @@
     var gid = 101;
     xn.options.water_image_url = 'view/img/water-small.png';	// 水印图片 / watermark image
 </script>
-<script src="view/js/bbs.js?1.0"></script>
+<script src="/static/ui/xut/js/bbs.js?1.0"></script>
 <script src="http://ss.imshusheng.com/static/editormd/lib/flowchart.min.js?1.0"></script>
 <script src="http://ss.imshusheng.com/static/editormd/lib/jquery.flowchart.min.js?1.0"></script>
 <script src="http://ss.imshusheng.com/static/editormd/lib/marked.min.js?1.0"></script>
