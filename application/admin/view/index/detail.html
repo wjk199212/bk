@@ -138,35 +138,43 @@
                                             <input type="hidden" name="return_html" value="1" />
                                             <input type="hidden" name="quotepid" value="0" />
 
-                                            <div class="message mt-1">
-                                                <textarea class="form-control" placeholder="内容" name="message" id="message"></textarea>
+                                            <!--<div class="message mt-1">-->
+                                                    <!--<textarea class="form-control" placeholder="内容" name="message" id="message"></textarea>-->
+                                            <!--</div>-->
+                                            <div class="message form-group">
+                                                <!--<textarea name="message" id="message" cols="30" rows="10"></textarea>-->
+                                                <label class="control-label" name="message" id="message">内容</label>
+                                                <div class="col-sm-10">
+                                                    <!--<textarea name="content" style="height: 300px;" id="editor1" class="form-control"></textarea>-->
+                                                    <scripyt id="editor1" name="message" type="text/plain"></scripyt>
+                                                </div>
                                             </div>
 
                                             <div class="text-muted mt-2 small">
                                                 <div class="d-flex justify-content-between">
                                                     <div>
                                                         <div class="media my-1">
-                                                            <div class="media-body col-lg-6 p-0">
-                                                                <div class="form-group input-group">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text"><i class="icon-barcode"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" placeholder="验证码" name="vcode">
-                                                                </div>
-                                                            </div>
-                                                            <div class="align-self-center ml-1">
-                                                                <div class="form-group input-group">
-                                                                    <img src="vcode.htm" width="150" height="32" class="vcode" onclick="this.src='vcode.htm?'+Math.random();" style="cursor:pointer" title="点击更新" nofollow />
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            <form action="/login/login_post" method="post">
+                                                                <input type="text" class="input" name="captcha" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码"  style="width: 200px;"/>
+                                                                <img src="{:captcha_src()}" alt="captcha" width="121" height="32" class="passcode" onclick="this.src=this.src+'?'"/>
 
-                                                        <button type="submit" class="btn btn-sm btn-secondary" id="submit" data-loading-text="正在提交..."> 回帖 </button>
 
-                                                    </div>
-                                                    <div>
 
-                                                        <a class="icon-mail-forward text-muted" href="post-create-1.htm" id="advanced_reply"> 高级回复</a>
+
+                                                                <!--<div class="media-body col-lg-6 p-0">-->
+                                                                <!--<div class="form-group input-group">-->
+                                                                    <!--<div class="input-group-prepend">-->
+                                                                        <!--<span class="input-group-text"><i class="icon-barcode"></i></span>-->
+                                                                    <!--</div>-->
+                                                                    <!--<input type="text" class="form-control " placeholder="验证码" name="vcode">-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                            <!--<div class="align-self-center ml-1">-->
+                                                                <!--<div class="form-group input-group">-->
+                                                                    <!--<div><img src="{:captcha_src()}" alt="captcha" /></div>-->
+                                                                    <!--<span id="tishi"></span>-->
+                                                            <!--</div>-->
+                                                        <!--</div>--><button type="submit" class="btn btn-sm btn-secondary" id="submit" data-loading-text="正在提交..."> 回帖 </button>
 
                                                     </div>
                                                 </div>
@@ -244,3 +252,65 @@
 </main>
 {/block}
 
+{block name='css'}
+<link href="/static/ui/library/ue/themes/default/css/ueditor.css" type="text/css" rel="stylesheet">
+
+{/block}
+
+
+
+
+
+{block name='script'}
+<script src="/static/ui/library/ue/ueditor.config.js"></script>
+<script src="/static/ui/library/ue/ueditor.all.js"></script>
+<script type="text/javascript">
+
+
+    var ue = UE.getEditor('message', {
+        serverUrl:"{:url('index/Article/umUploadImage')}",
+        toolbars:[[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+            'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+            'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+            'print', 'preview', 'searchreplace', 'drafts', 'help'
+        ]],
+        initialFrameWidth: '100%',
+        maximumWords: 20000,
+        initialFrameHeight:'350'
+    });
+    // ajax 操作验证码  失败！！！！
+        //
+        // $("#vcode").blur(function(){
+        //     var vcode = $(this).val(); //找到这个文本框中的值
+        //     $.ajax({
+        //         url:"__ACTION__",  //发送给他自己
+        //         data:{vcode:vcode}, //将文本框中的值传过去
+        //         type:"POST",  //传输方式
+        //         dataType:"TEXT",
+        //         success: function(data){
+        //             if(data.trim()=="ok")
+        //             {
+        //                 //返回成功过就输出提示信息
+        //                 $("#tishi").html("验证通过！");
+        //                 $("#tishi").css("color","green");
+        //             }
+        //             else
+        //             {
+        //                 //否则就返回错误的提示信息
+        //                 $("#tishi").html("验证码输入错误！");
+        //                 $("#tishi").css("color","red");
+        //             }　　　　　　　　　　　　　　　　//返回成功后的操作
+        //         }
+        //     })
+        // })
+</script>
+
+{/block}

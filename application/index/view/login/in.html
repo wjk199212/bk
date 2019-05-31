@@ -38,11 +38,17 @@
         <div class="col-sm-5">
             <form method="post" action="" id="form">
                 <p class="m-t-md">登录</p>
-                <input type="text" name="mobile" class="form-control uname" placeholder="用户名" />
+                <input type="text" name="mobile" class="form-control uname" placeholder="用户名" autocomplete="off"/>
                 <input type="password"  name="password" class="form-control pword m-b" placeholder="密码" />
+                <!--<form action="" method="post">-->
+                    <!--<input type="captcha" class="form-control" name="captcha" placeholder="填写下侧的验证码" data-validate="required:请填写下侧的验证码" autocomplete="off" style="width: 200px;"/>-->
+
+                    <input type="text"  name="captcha" class="form-control pword m-b" placeholder="验证码"  autocomplete="off"/>
+                    <img src="{:captcha_src()}" alt="captcha" width="121" height="32" class="" onclick="this.src=this.src+'?'"/>
+                    <br>
                 <a href="{:url('index/backlogin/in')}">登录管理员系统</a>
                 <a href="{:url('index/Login/up')}">注册一个账号</a>
-                <button  id="btn" class="btn btn-success btn-block" type="button">登录</button>
+                <button  id="btn" class="btn btn-success btn-block" type="submit">登录</button>
             </form>
         </div>
     </div>
@@ -53,20 +59,20 @@
 <script src="/static/ui/library/layer/layer/layer.js"></script>
 <script>
     <!--给btn添加点击事件-->
-    $('#btn').click(function () {
-        //serialize() 方法通过序列化表单值，序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。
-        var data = $('#form').serialize();
-
-        $.post('', data, function (e) {
-            console.log(e)
-            if (e.code){
-                location.href = e.url;
-            }else{
-                layer.alert(e.msg, {icon: 2})
-            }
-        })
-
-    })
+    // $('#btn').click(function () {
+    //     //serialize() 方法通过序列化表单值，序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。
+    //     var data = $('#form').serialize();
+    //
+    //     $.post('', data, function (e) {
+    //         console.log(e)
+    //         if (e.code){
+    //             location.href = e.url;
+    //         }else{
+    //             layer.alert(e.msg, {icon: 2})
+    //         }
+    //     })
+    //
+    // })
 
 </script>
 

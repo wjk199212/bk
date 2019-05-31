@@ -8,6 +8,7 @@
 namespace app\index\controller;
 
 use app\index\model\admin;
+use app\index\model\category;
 use app\index\model\user;
 use think\Controller;
 
@@ -85,10 +86,17 @@ class Login extends Controller
 
             ];
             $val=$this->validate($data,$rule, $msg);
+            $code=input('post.captcha');
+            $captcha = new \think\captcha\Captcha();
+
+           if (!$captcha->check($code)){
+               $this->error('验证码有误');
+           }
+
 //         判断是否登录成功
 //            当验证信息有误时输出错误提示
             if ($val !==true){
-                return $this->error($val);
+                 $this->error($val);
             }
 //         DB获取数据库
 //           $admin= \think\Db::table('admin')->where('mobile',$data['mobile'])->find();
@@ -105,17 +113,34 @@ class Login extends Controller
             if (password_verify($data['password'],$admin['password'])){
 //             用session 记录当前登录状态
                 session('adminLoginVal',$admin);
-                $this->success('登录成功',url('admin/index/lobby'));
+                $this->redirect('admin/index/lobby');
             }else{
                 $this->error('您输入的账户密码有误');
             }
         }
+
+
+
+
+
+
+
 //        处理get请求
         if ($res->isGet()){
 //            输出
             return $this->fetch();
 
         }
+    }
+
+    public function login_post(){
+        $code=input('post.captcha');
+        $captcha = new \think\captcha\Captcha();
+        $result=$captcha->check($code);
+        if($result===false){
+            echo '验证码错误';exit;
+        }
+        echo '验证码正确，继续';exit;
     }
 
 }

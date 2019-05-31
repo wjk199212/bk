@@ -8,6 +8,7 @@
 namespace app\admin\controller;
 use app\index\model\article;
 use app\index\model\category;
+use think\captcha\Captcha;
 use think\Controller;
 
 class index extends Controller
@@ -372,8 +373,9 @@ class index extends Controller
         $info = article::get($id);
         $this->assign('info',$info);
 //        更新阅读次数
-        $info->setInc('hits');
+//        $info->setInc('hits');
         return $this->fetch();
+
     }
 
 //    分类列表
@@ -393,29 +395,42 @@ class index extends Controller
         $this->assign('id',$id);
         return $this->fetch();
     }
-
-
-    public function image(){
-        $id = $this->request->param('id',20);
-        $this->assign('id',$id);
-        $category = $this->categoryList(19);
-        if (empty($id)){
-            $where = [];
-        }else{
-            $where['category_id'] = $id;
+//    public function verify(){
+//
+//    }
+    public function login_post(){
+        $code=input('post.captcha');
+        $captcha = new \think\captcha\Captcha();
+        $result=$captcha->check($code);
+        if($result===false){
+            echo '验证码错误';exit;
         }
-        $list = images::where($where)->select();
-        $this->assign('list',$list);
-        $categoryList = category::where('type',2)->select();
+        echo '验证码正确，继续';exit;
+    }
 
-        $this->assign('categoryList',$categoryList);
-        $images = images::where('category_id',$id)->all();
-        $this->assign('images',$images);
-        return $this->fetch();
-    }
-    public function master(){
-        return $this->fetch();
-    }
+//    public function verify(){
+//        if(empty($_POST))
+//        {
+//            $this->show();  //显示页面
+//        }else
+//        {
+//            //验证验证码是否正确,可以用Think\Verify类的check方法检测验证码的输入是否正确
+//            $yzm = $_POST["yzm"];   //接收传过来的文本框的值
+//            $v = new \Think\Verify();
+//            if($v->check($yzm))  //验证完是有返回值的,所以我们可以用if判断一下
+//            {
+//                $this->ajaxReturn("ok","eval");  //输入正确返回ok
+//            }
+//            else
+//            {
+//                $this->ajaxReturn("no","eval");    //输入错误返回no
+//            }
+//        }
+//    }
+
+
+
+
 
 
 
