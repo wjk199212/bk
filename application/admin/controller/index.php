@@ -43,6 +43,7 @@ class index extends Controller
 //            print_r($categories);
         }
         $this->assign('list',$list);
+
         return $this->fetch();
     }
     public function blind(){
@@ -407,26 +408,6 @@ class index extends Controller
         }
         echo '验证码正确，继续';exit;
     }
-
-//    public function verify(){
-//        if(empty($_POST))
-//        {
-//            $this->show();  //显示页面
-//        }else
-//        {
-//            //验证验证码是否正确,可以用Think\Verify类的check方法检测验证码的输入是否正确
-//            $yzm = $_POST["yzm"];   //接收传过来的文本框的值
-//            $v = new \Think\Verify();
-//            if($v->check($yzm))  //验证完是有返回值的,所以我们可以用if判断一下
-//            {
-//                $this->ajaxReturn("ok","eval");  //输入正确返回ok
-//            }
-//            else
-//            {
-//                $this->ajaxReturn("no","eval");    //输入错误返回no
-//            }
-//        }
-//    }
 
 
 

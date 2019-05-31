@@ -11,10 +11,11 @@ use think\Model;
 
 class article extends Model
 {
-    //
+    //自动开启设置时间
     protected $autoWriteTimestamp = true;
 
     public function category()
+//        一对多链接
     {
         return $this->belongsTo('category', 'category_id');
     }

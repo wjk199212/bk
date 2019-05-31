@@ -63,7 +63,7 @@ class Login extends Controller
     public function out(){
 //        退出登录 置空session 并跳转到登录页面
         session('adminLoginVal',null);
-        $this->redirect('admin/Login/in');
+        $this->redirect('index/Login/in');
     }
 //    登录
     public function in(){

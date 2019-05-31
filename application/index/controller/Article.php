@@ -232,7 +232,11 @@ class Article extends Controller
                     "state" => 'SUCCESS'
                 ];
 
-                return json_encode($info);
+                return json($info);
+            }else{
+                return[
+                  "state"=>"ERROR"
+                ];
             }
         }
 
