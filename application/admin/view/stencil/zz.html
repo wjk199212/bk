@@ -254,8 +254,8 @@
             <ul class="navbar-nav">
                 {if $Request.session}
                 <li class="nav-item">
-                    <a rel="nofollow" class="nav-link" href="{:url('admin/personal/head')}"><i
-                            class="icon-user">欢迎您：{$Request.session.adminLoginVal.nickname}</i> </a></li>
+                    <a rel="nofollow" class="nav-link" href="{:url('admin/personal/head')}">
+                            欢迎您：{$Request.session.adminLoginVal.nickname} </a></li>
                 <li class="nav-item">
                     <a rel="nofollow" class="nav-link"
                        href="{:url('index/Login/out')}">滚蛋去吧</a></li>
@@ -298,17 +298,6 @@
                 {block name='main'} {/block}
 
 
-                <nav class="my-3">
-                    <ul class="pagination justify-content-center flex-wrap">
-                        <li class="page-item active"><a href="index-1.htm" class="page-link">1</a>
-                        </li>
-                        <li class="page-item"><a href="index-2.htm" class="page-link">2</a></li>
-                        <li class="page-item"><a href="index-3.htm" class="page-link">3</a></li>
-                        <li class="page-item"><a href="index-4.htm" class="page-link">4</a></li>
-                        <li class="page-item"><a href="index-2.htm" class="page-link">▶</a></li>
-                    </ul>
-                </nav>
-
             </div>
             <div class="col-lg-3 d-none d-lg-block aside">
                 <a role="button" class="btn btn-primary btn-block mb-3" href="{:url('index/article/add')}">发布新主题</a>
@@ -343,32 +332,15 @@
 
                 </div>
                 <div class="form-group">
-                    <form action="search.htm" id="search_form">
+                    <form action="{:url('admin/personal/search')}"  method="post">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="关键词" name="keyword">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">搜索</button>
+                                <button type="submit">搜索</button>
+                                <!--<a href="{:url('admin/personal/search')}" class="btn btn-primary" >搜索</a>-->
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        小黑板
-                    </div>
-                    <div class="card-footer">
-                        郑州PHP程序员：<a rel="nofollow" target="_blank"
-                                    href="http://shang.qq.com/wpa/qunwpa?idkey=0641d15e8f5f4cd93db1c76a197e40b568ec3f82e042f22f27fc51ef0dcda7f6"><img
-                            border="0" src="/static/ui/xbt/img/group.png" alt="郑州php程序员俱乐部ZPC"
-                            title="郑州php程序员俱乐部ZPC"></a><br>郑州PHP招聘：<a rel="nofollow" target="_blank"
-                                                                      href="http://shang.qq.com/wpa/qunwpa?idkey=748f4233f068fa2eed47a85fd0d88fa6a01aa642fd8b5c8ccde35e6c4f5c0262"><img
-                            border="0" src="/static/ui/xbt/img/group.png" alt="郑州PHP招聘/交流" title="郑州PHP招聘/交流"></a><br>郑州Python程序员：<a
-                            rel="nofollow" target="_blank"
-                            href="http://shang.qq.com/wpa/qunwpa?idkey=dca46d3b740a7193b67f317fd91965ee892f62120cc23b5643c253aa2fd316ca"><img
-                            border="0" src="/static/ui/xbt/img/group.png" alt="郑州Python程序员" title="郑州Python程序员"></a><br>郑州程序员招聘：<a
-                            rel="nofollow" target="_blank"
-                            href="http://shang.qq.com/wpa/qunwpa?idkey=b976d806a8aa64041351b7b749b92599a947f57a0d31d359c3c8aef42e49d490"><img
-                            border="0" src="/static/ui/xbt/img/group.png" alt="郑州程序员招聘交流" title="郑州程序员招聘交流"></a></div>
                 </div>
 
                 <div class="card friendlink">
@@ -376,8 +348,8 @@
                     <div class="card-body small">
                         <ul>
                             <li class="mb-1 small line-height-2">
-                                <a href="https://imshusheng.com/" target="_blank">
-                                    迪迦奥特门 </a>
+                                <a href="https://www.baidu.com/" target="_blank">
+                                    有你想要的哟 </a>
                             </li>
                         </ul>
                     </div>

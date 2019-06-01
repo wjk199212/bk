@@ -373,6 +373,7 @@ class index extends Controller
         $id =$this->request->param('id');
         $info = article::get($id);
         $this->assign('info',$info);
+//        print_r($info);
 //        更新阅读次数
 //        $info->setInc('hits');
         return $this->fetch();
@@ -408,6 +409,8 @@ class index extends Controller
         }
         echo '验证码正确，继续';exit;
     }
+
+
 
 
 

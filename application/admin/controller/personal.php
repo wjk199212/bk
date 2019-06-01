@@ -8,15 +8,42 @@
 namespace app\admin\controller;
 
 
+use app\index\model\article;
 use app\index\model\user;
 use think\Controller;
 
 class personal extends Controller
 {
-    public function datum(){
-        return $this->fetch();
+    public function datum()
+    {
+        if ($this->request->isGet()){
+            $id = $this->request->param('id');
+            $list = user::where('id',$id)->find();
+            $this->assign('list',$list);
+//            print_r($list);
+            return $this->fetch();
+        }
+//        if ($this->request->isPost()){
+//            $thumbs = $this->request->param('yy');
+//            $id = $this->request->param('$id');
+//            $data = [];
+//        }
+        $id = $this->request->param('id');
 
 
+
+        exit();
+        $image = $this->request->file('file');
+        $res = $image->validate(['size' => 1048576, 'ext' => 'jpg,png,gif'])->move('static/upload');
+        $path = $res->getPathname();
+
+        if (user::where('id', $id)->update(['avatar' => $path])) {
+            return json(['code' => 1, 'url' => $path, 'msg' => "成功"]);
+        } else {
+            return json(['code' => 0, 'msg' => '失败']);
+//        }
+
+        }
     }
     public function head(){
         $id= $this->request->param('id',1);
@@ -54,7 +81,7 @@ class personal extends Controller
             }
             $newpassword = password_hash($password['password_new'],1);
             if (user::where('id',$id)->update(['password'=>$newpassword])){
-                $this->success('成功',url('index/Sign/logout'));
+                $this->success('成功',url('admin/personal/head'));
             }else{
                 $this->error('失败');
             }
@@ -62,5 +89,25 @@ class personal extends Controller
 
         }
     }
+    public function search()
+    {
+        if ($this->request->isPost()) {
 
+            $keyword = $this->request->param('keyword');
+
+            $num = article::where('title', 'like', '%' . $keyword . '%')->count();
+            $list = article::where('title', 'like', '%' . $keyword . '%')
+                ->paginate(10, false, ['query' => ['keyword' => $keyword]]);
+            $newList = $list->toArray()['data'];
+            foreach ($newList as $k => $v) {
+                $newList[$k]['title'] = str_replace($keyword, ('<span class="text-danger">' . $keyword . '</span>'), $v['title']);
+            }
+            $this->assign('keyword', $keyword);
+            $this->assign('list', $list);
+            $this->assign('newList', $newList);
+            $this->assign('num', $num);
+            return $this->fetch();
+        }
+
+    }
 }

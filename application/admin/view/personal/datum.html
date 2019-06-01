@@ -116,11 +116,11 @@
             <!-- 左侧：版块 -->
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item home" fid="0" data-active="fid-0"><a class="nav-link" href="."><i class="icon-home d-md-none"></i> 首页</a></li>
+                <li class="nav-item home" fid="0" data-active="fid-0"><a class="nav-link" href="{:url('admin/Index/lobby')}"><i class="icon-home d-md-none"></i> 首页</a></li>
 
 
                 <li class="nav-item" fid="1" data-active="fid-1">
-                    <a class="nav-link" href="forum-1.htm"><i class="icon-circle-o d-md-none"></i> 闲聊</a>
+                    <a class="nav-link" href="{:url('admin/Index/talk')}"><i class="icon-circle-o d-md-none"></i>闲聊</a>
                 </li>
 
 
@@ -209,9 +209,13 @@
             <div class="col-lg-2 hidden-md hidden-sm" id="my_aside">
                 <div class="card">
                     <div class="card-body text-center">
+                        {if $list->avatar}
+                        <img src="/{$list->avatar}" alt="">
+                        {else/}
 
                         <img class="avatar-4" src="/static/ui/img/pig.jpeg">
-                        <br>wjk
+                        {/if}
+                        <br>{$list->nickname}
                     </div>
                     <div class="list-group list-group-flush text-center">
 
@@ -232,19 +236,19 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link " href="{:url('admin/Personal/head')}" data-active="my-profile">基本资料</a>
+                                <a class="nav-link " href="{:url('admin/Personal/head',['id'=>$list->id])}" data-active="my-profile">基本资料</a>
                             </li>
 
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{:url('admin/Personal/password')}" data-active="my-password">密码</a>
+                                <a class="nav-link" href="{:url('admin/Personal/password',['id'=>$list->id])}" data-active="my-password">密码</a>
                             </li>
 
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{:url('admin/Personal/datum')}" data-active="my-avatar">头像</a>
+                                <a class="nav-link" href="{:url('admin/Personal/datum',['id'=>$list->id])}" data-active="my-avatar">头像</a>
                             </li>
 
 
@@ -255,22 +259,24 @@
                     </div>
                     <div class="card-body">
 
-
                         <div class="col-lg-6 mx-auto">
                             <div class="form-group text-center">
-                                <img id="avatar_img" class="logo-4" src="/static/ui/img/pig.jpeg">
+                                {if $list->avatar}
+                                <img src="/{$list->avatar}" alt="" id="avatar_img" class="logo-4">
+                                {else/}
+                                <img class="avatar-4" src="/static/ui/img/pig.jpeg">
+                                {/if}
+
+
                             </div>
-                            <div class="form-group custom-file">
-                                <input type="file" id="avatar_upload" accept="image/gif,image/jpeg,image/png,image/jpg,image/bmp"  class="upload custom-file-input" value="头像"/>
-                                <label class="custom-file-label" for="customFile">选择文件</label>
-                            </div>
-                            <div class="progress mt-2">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"  id="avatar_progress"></div>
-                            </div>
+
+                            <label class="form-group text-center" style="margin-left: 110px" id="picker">点击更换头像</label>
+
+
+
+
+
                         </div>
-
-
-                    </div>
                 </div>
 
             </div>
